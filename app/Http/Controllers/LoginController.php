@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 use App\Models\Client;
 
 class LoginController extends Controller
@@ -12,21 +13,26 @@ class LoginController extends Controller
         return view('Login');
     }
 
-    public function store(){
+    public function store(Request $request){
 
-        $request = request()->validate([
-            'email' =>'required|email',
-            'password' => 'required'
+        $nom = $request->input("Nom");
+        $prenom = $request->input("Prenom");
+        $email = $request->input("Email");
+        $password = bcrypt($request->input("Password"));
+
+        $insertTable = Client::insert([
+            'Nom' => $nom,
+            'Prenom' => $prenom,
+            'Email' => $email,
+            'Password' => $password
         ]);
 
-
-        $client = Client::where('email' , $request["email"])->first();
-        $password = Client::where('password' , $request["password"])->first();
-
-        if ($client != null && $password != null){
-            return view('test');
-        }else{
-            return back()->withErrors(['email' => 'These credentials do not match our records.']);
+        if ($insertTable){
+            echo "<h1>Insert OUI</h1>";
         }
+        else{
+            echo "<h1>Insert NOM</h1>";
+        }
+
     }
 }

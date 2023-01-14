@@ -10,5 +10,5 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Client extends Authenticatable
 {
-    protected $table = 'logincLient';
+    protected $table = 'client';
 }
