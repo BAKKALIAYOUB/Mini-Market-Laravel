@@ -31,10 +31,18 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Administrateur</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
                                     <form class="user" method="POST" action="loginValidation"> 
                                         @csrf
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="exampleInputPassword" placeholder="Nom" name="Nom">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="exampleInputPassword" placeholder="Prenom" name="Prenom">
+                                        </div>
                                         <div class="form-group">
                                             <input type="texte" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
@@ -44,9 +52,9 @@
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password" name="Password">
                                         </div>
-                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
+                                        <input type="submit" class="btn btn-primary btn-user btn-block" value="Register">
                                     </form>
-                                    
+                                    <hr>
 
                                 </div>
                             </div>
