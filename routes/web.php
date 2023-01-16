@@ -34,4 +34,4 @@ Route::get('/produits' , [ProduitsController::class , 'index']);
 
 Route::get('/produits', [ProduitsController::class , 'index'])->name('produits');
 
-Route::get('/test' , [CommandeController::class , 'ajouterCommande']);
+Route::post('test' , [CommandeController::class , 'ajouterCommande'])->name("test");

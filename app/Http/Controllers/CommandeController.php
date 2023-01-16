@@ -19,7 +19,9 @@ class CommandeController extends Controller
         $insert = Commande::insert([
             'Id_commande' => $produits->Id_Produits,
             'Description' => $produits->Description,
-            'URL' => $produits->URL,           
+            'URL' => $produits->URL, 
+            'Quantité' => "12",         
+            'Prix' => "100"
         ]);
 
         if($insert){

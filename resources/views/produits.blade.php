@@ -13,10 +13,9 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{ asset('./css/styles.css') }}" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-        <meta name="_token" content="{{ csrf_token() }}">
-
     </head>
     <body>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
@@ -100,7 +99,6 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
 
 
 
@@ -115,9 +113,15 @@
 
                 $id = parseInt($(elt).attr("id"));
 
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr("content")
+                    }
+                });
+                
                 $.ajax({
-                    type: "GET",
-                    url: "{{ route('test') }}",
+                    type: "POST",
+                    url: "test",
                     data: { id: $id }
                 });
 
