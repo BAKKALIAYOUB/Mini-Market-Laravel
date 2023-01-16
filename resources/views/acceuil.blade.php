@@ -67,7 +67,7 @@
                 </div>
             </div>
         </header>
-
+        <!-- Client / administrateur -->
         <div class="Boxs">
             <div class="boxClient">
                 <a href="register">Client</a>
@@ -79,7 +79,7 @@
         </div>  
 
 
-
+        <!-- Typed effect. Source: https://github.com/mattboldt/typed.js/ -->
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
         <script>
@@ -92,9 +92,5 @@
             });
 
         </script>
-
-
-
-
     </body>
 </html>

@@ -27,8 +27,11 @@ Route::get("/login" , function(){
     return view('Login');
 });
 
-Route::get('loginValidation' , [LoginController::class , "create"]);
 Route::post('loginValidation' , [LoginController::class , "store"]);
 
+Route::get('/produits' , [ProduitsController::class , 'index']);
 
 
+Route::get('/produits', [ProduitsController::class , 'index'])->name('produits');
+
+Route::get('/test' , [CommandeController::class , 'ajouterCommande']);

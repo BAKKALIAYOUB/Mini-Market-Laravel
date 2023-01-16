@@ -33,7 +33,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Administrateur</h1>
                                     </div>
-                                    <form class="user" method="POST" action="loginValidation"> 
+                                    <form class="user" method="POST" action=""> 
                                         @csrf
                                         <div class="form-group">
                                             <input type="texte" class="form-control form-control-user"

@@ -19,20 +19,18 @@ class LoginController extends Controller
         $prenom = $request->input("Prenom");
         $email = $request->input("Email");
         $password = bcrypt($request->input("Password"));
-
+        
         $insertTable = Client::insert([
             'Nom' => $nom,
             'Prenom' => $prenom,
-            'Email' => $email,
+            'Email' => $email,           
             'Password' => $password
         ]);
 
         if ($insertTable){
-            echo "<h1>Insert OUI</h1>";
+            return redirect()->route('produits');
         }
-        else{
-            echo "<h1>Insert NOM</h1>";
-        }
+
 
     }
 }
