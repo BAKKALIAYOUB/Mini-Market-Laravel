@@ -16,20 +16,18 @@ class CommandeController extends Controller
 
         $produits = Produits::where('Id_Produits' , $id)->first();
 
-        $insert = Commande::insert([
-            'Id_commande' => $produits->Id_Produits,
-            'Description' => $produits->Description,
-            'URL' => $produits->URL, 
-            'Quantité' => "12",         
-            'Prix' => "100"
-        ]);
-
-        if($insert){
-            echo "<h1>OUI ZED9ET </h1>";
+        $commande = Commande::where('Id_commande' , $id)->first();
+        if($commande ){
+            $commande->increment('Quantité');
         }
         else{
-            echo "<h1>NOM MAZED9ET </h1>";
-
+            $insert = Commande::insert([
+                'Id_commande' => $produits->Id_Produits,
+                'Description' => $produits->Description,
+                'URL' => $produits->URL, 
+                'Quantité' => 1,         
+                'Prix' => $produits->Prix
+            ]);
         }
     }
 }
