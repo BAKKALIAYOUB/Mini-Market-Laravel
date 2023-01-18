@@ -16,18 +16,19 @@ class CommandeController extends Controller
 
         $produits = Produits::where('Id_Produits' , $id)->first();
 
-        $commande = Commande::where('Id_commande' , $id)->first();
-        if($commande ){
-            $commande->increment('Quantité');
-        }
-        else{
-            $insert = Commande::insert([
-                'Id_commande' => $produits->Id_Produits,
-                'Description' => $produits->Description,
-                'URL' => $produits->URL, 
-                'Quantité' => 1,         
-                'Prix' => $produits->Prix
-            ]);
-        }
+        $insert = Commande::insert([
+            'Id_commande' => $produits->Id_Produits,
+            'Description' => $produits->Description,
+            'URL' => $produits->URL, 
+            'Quantité' => 1,         
+            'Prix' => $produits->Prix
+        ]);
+        
+    }
+
+    public function NomberOfCommande(){
+        $NumbreCommande = Commande::count();
+
+        return view('produits' , compact('NumbreCommande'));
     }
 }
