@@ -29,6 +29,6 @@ class CommandeController extends Controller
     public function NomberOfCommande(){
         $NumbreCommande = Commande::count();
 
-        return view('produits' , compact('NumbreCommande'));
+        return view('produits' , ['NumbreCommande' => $NumbreCommande]);
     }
 }

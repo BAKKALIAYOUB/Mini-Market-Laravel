@@ -1,11 +1,7 @@
 
 
 function addToCard(elt){
-    $numCommande = $(".badge ").text();
-    $commande  = $(".badge")
-    $nouveau = parseInt($numCommande) + 1;
 
-    $commande.text($nouveau);
 
 
     $id = parseInt($(elt).attr("id"));
@@ -24,5 +20,5 @@ function addToCard(elt){
         }
     });
 
-
+    window.location.reload();
     }
