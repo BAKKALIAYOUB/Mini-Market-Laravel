@@ -36,19 +36,39 @@
                                     <form class="user" method="POST" action="loginValidation"> 
                                         @csrf
                                         <div class="form-group">
+                                            <div style="color: red;">
+                                                @if($errors->has('Nom'))
+                                                    <p>Le champ "Nom" a une erreur</p>
+                                                @endif
+                                            </div>
                                             <input type="text" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Nom" name="Nom">
                                         </div>
                                         <div class="form-group">
+                                            <div style="color :red;">
+                                                @if($errors->has('Prenom'))
+                                                    <p>Le champ "Prenom" a une erreur</p>
+                                                @endif
+                                            </div>
                                             <input type="text" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Prenom" name="Prenom">
                                         </div>
                                         <div class="form-group">
+                                            <div style="color: red;">
+                                                @if($errors->has('Email'))
+                                                    <p>Le champ "Email" a une erreur</p>
+                                                @endif
+                                            </div>
                                             <input type="texte" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Email" name="Email">
                                         </div>
                                         <div class="form-group">
+                                            <div style="color: red;">
+                                                @if($errors->has('Password'))
+                                                    <p>Le champ "PASSWORD" a une erreur</p>
+                                                @endif
+                                            </div>
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password" name="Password">
                                         </div>

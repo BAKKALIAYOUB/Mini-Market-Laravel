@@ -20,6 +20,13 @@ class LoginController extends Controller
         $email = $request->input("Email");
         $password = bcrypt($request->input("Password"));
         
+        $request->validate([
+            'Nom' => 'required',
+            'Prenom' => 'required',
+            'Email' => 'required|email',
+            'Password' => 'required'
+        ]);
+
         $insertTable = Client::insert([
             'Nom' => $nom,
             'Prenom' => $prenom,
