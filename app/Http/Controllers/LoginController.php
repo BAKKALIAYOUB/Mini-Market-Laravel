@@ -15,6 +15,7 @@ class LoginController extends Controller
 
     public function store(Request $request){
 
+        //recuperer les input entrer par l'user dans le formulaire
         $nom = $request->input("Nom");
         $prenom = $request->input("Prenom");
         $email = $request->input("Email");
@@ -23,10 +24,11 @@ class LoginController extends Controller
         $request->validate([
             'Nom' => 'required',
             'Prenom' => 'required',
-            'Email' => 'required|email',
+            //validation d'email: Unique dans la  table Client
+            'Email' => 'required|email|unique:Client,Email',
             'Password' => 'required'
         ]);
-
+        //insertion  des données dans la table client
         $insertTable = Client::insert([
             'Nom' => $nom,
             'Prenom' => $prenom,
@@ -34,6 +36,7 @@ class LoginController extends Controller
             'Password' => $password
         ]);
 
+        //Réussit d'insertion ==> redirect vers view produits 
         if ($insertTable){
             return redirect()->route('produits');
         }
