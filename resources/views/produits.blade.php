@@ -42,7 +42,7 @@
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">{{ $NumbreCommande }}</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
                 </div>
@@ -96,7 +96,29 @@
 
 
 
-        <script src="{{ asset('js/fonctions.js') }}"></script>
+        <script>
+            $(".badge").html('{{ $NumbreCommande }}');
 
+            function addToCard(elt){
+                $id = parseInt($(elt).attr("id"));
+
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr("content")
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "test",
+                    data: { 
+                        id: $id,
+                    }
+                });
+
+                $(".badge").html('{{ $NumbreCommande }}');
+
+            }
+        </script>
     </body>
 </html>

@@ -29,7 +29,7 @@ Route::get("/login" , function(){
 
 Route::post('loginValidation' , [LoginController::class , "store"]);
 
-Route::get('/produits' , [ProduitsController::class , 'index']);
+Route::get('/produits' , [ProduitsController::class , 'index'])->name('produits');
 
 
 Route::post('test' , [CommandeController::class , 'ajouterCommande']);
