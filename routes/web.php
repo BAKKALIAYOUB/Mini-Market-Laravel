@@ -26,6 +26,9 @@ Route::get('/register' , function(){
 Route::get("/login" , function(){
     return view('Login');
 });
+Route::get("/produits/commande" , function(){
+    return view('commande');
+});
 
 Route::post('loginValidation' , [LoginController::class , "store"]);
 
@@ -33,5 +36,13 @@ Route::get('/produits' , [ProduitsController::class , 'index'])->name('produits'
 
 
 Route::post('test' , [CommandeController::class , 'ajouterCommande']);
+
+Route::get('/CommandeController/NomberOfCommande' , [ CommandeController::class , 'NomberOfCommande' ])->name('/CommandeController/NomberOfCommande');
+Route::get('/produits/commande' ,  [CommandeController::class , 'CommandeTable'])->name('commande');
+
+
+Route::post('produits/updateQuantité' , [CommandeController::class , 'updateCommande']);
+
+Route::get('/CommandeController/TotalCommande' , [CommandeController::class , 'TotalCommande'])->name('/CommandeController/NomberOfCommande');
 
 

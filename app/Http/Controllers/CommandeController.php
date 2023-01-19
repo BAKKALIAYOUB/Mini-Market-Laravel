@@ -29,6 +29,25 @@ class CommandeController extends Controller
     public function NomberOfCommande(){
         $NumbreCommande = Commande::count();
 
-        return view('produits' , ['NumbreCommande' => $NumbreCommande]);
+        return $NumbreCommande;
+    }
+
+    public function CommandeTable(){
+        $table = Commande::all();
+
+        return view('commande' , compact('table'));
+    }
+
+    public function updateCommande(Request $request){
+        Commande::where('Id_commande' , $request->idCommande)->update(['Quantité' => $request->quantite]);
+    }
+
+    public function TotalCommande(){
+        $table = Commande::all();
+        $Total=0;
+        foreach($table as $commande){
+            $Total += intval( intval($commande->Prix) * intval($commande->Quantité)  ) ;
+        }
+        return $Total;
     }
 }

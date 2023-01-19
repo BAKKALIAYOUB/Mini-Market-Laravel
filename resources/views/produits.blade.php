@@ -39,11 +39,11 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                        <a class="btn btn-outline-dark" href="/produits/commande">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
+                        </a>
                     </form>
                 </div>
             </div>
@@ -97,8 +97,10 @@
 
 
         <script>
-            $(".badge").html('{{ $NumbreCommande }}');
 
+            $.get('/CommandeController/NomberOfCommande' , function(rep){
+                $(".badge").html(rep);
+            });
             function addToCard(elt){
                 $id = parseInt($(elt).attr("id"));
 
@@ -116,8 +118,9 @@
                     }
                 });
 
-                $(".badge").html('{{ $NumbreCommande }}');
-
+                $.get('/CommandeController/NomberOfCommande' , function(rep){
+                    $(".badge").html(rep);
+                });
             }
         </script>
     </body>
