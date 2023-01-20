@@ -50,4 +50,8 @@ class CommandeController extends Controller
         }
         return $Total;
     }
+
+    public function DeleteCommande(Request $request){
+        Commande::where('Id_commande' , $request->idCommande)->delete();
+    }
 }

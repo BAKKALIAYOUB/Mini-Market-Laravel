@@ -45,4 +45,4 @@ Route::post('produits/updateQuantité' , [CommandeController::class , 'updateCom
 
 Route::get('/CommandeController/TotalCommande' , [CommandeController::class , 'TotalCommande'])->name('/CommandeController/NomberOfCommande');
 
-
+Route::post('produits/DeleteCommande' , [CommandeController::class , 'DeleteCommande']);

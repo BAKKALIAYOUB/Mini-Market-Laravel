@@ -67,7 +67,7 @@
                             DH
                         </td>
                         <td class='select'>
-                            <a class='button' href='#'>
+                            <a class='button' href='#' id="{{ $commande->Id_commande }}" onclick="supprimerCommande(this)">
                                 Supprimer
                             </a>
                         </td>
@@ -122,7 +122,24 @@
                     $(".TotalCommande").html(rep + " DH");
                 });
             }
-            
+
+            function supprimerCommande(elt){
+                $idCommande = $(elt).attr('id');
+
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr("content")
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "DeleteCommande",
+                    data: { idCommande: $idCommande }
+                });
+
+                window.location.reload();
+            }
             
         </script>
             
