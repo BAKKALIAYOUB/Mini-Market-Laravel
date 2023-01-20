@@ -20,7 +20,7 @@
     <body>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #30485f;">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!">Friends Market</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -31,14 +31,7 @@
                 </div>
             </div>
         </nav>
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Friends Market</h1>
-                </div>
-            </div>
-        </header>
+
         <!-- Section-->
         <h1 style="float:left;padding-left:10px;">Votre Panier :</h1>
         <div style="padding:10px;">
@@ -84,9 +77,7 @@
 
 
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
-        </footer>
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 

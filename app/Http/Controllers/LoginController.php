@@ -10,7 +10,7 @@ use App\Models\Client;
 class LoginController extends Controller
 {
     public function create(){
-        return view('Login');
+        return view('Register');
     }
 
     public function store(Request $request){
@@ -37,10 +37,9 @@ class LoginController extends Controller
         ]);
 
         //Réussit d'insertion ==> redirect vers view produits 
-        if ($insertTable){
+        if ($insertTable ){
             return redirect()->route('produits');
         }
-
-
     }
+
 }

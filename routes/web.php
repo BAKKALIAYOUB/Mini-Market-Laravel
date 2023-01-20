@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,16 +31,18 @@ Route::get("/produits/commande" , function(){
     return view('commande');
 });
 
-Route::post('loginValidation' , [LoginController::class , "store"]);
+//route login qui retourne la view register
+Route::get('login' , [LoginController::class , 'create'])->name('login');
+Route::post('loginValidation' , [LoginController::class , "store"])->middleware("User_Auth");
 
-Route::get('/produits' , [ProduitsController::class , 'index'])->name('produits');
+//route produits qui redirect vers la view produits si l'athentification du l'utilisateur est reussi
+Route::get('/produits' , [ProduitsController::class , 'index'])->name('produits')->middleware('auth');
 
 
 Route::post('test' , [CommandeController::class , 'ajouterCommande']);
 
 Route::get('/CommandeController/NomberOfCommande' , [ CommandeController::class , 'NomberOfCommande' ])->name('/CommandeController/NomberOfCommande');
 Route::get('/produits/commande' ,  [CommandeController::class , 'CommandeTable'])->name('commande');
-
 
 Route::post('produits/updateQuantité' , [CommandeController::class , 'updateCommande']);
 
