@@ -67,7 +67,7 @@
                             DH
                         </td>
                         <td class='select'>
-                            <a class='button' href='#' id="{{ $commande->Id_commande }}" onclick="supprimerCommande(this)">
+                            <a class='button' id="{{ $commande->Id_commande }}" onclick="supprimerCommande(this)">
                                 Supprimer
                             </a>
                         </td>
@@ -135,10 +135,17 @@
                 $.ajax({
                     type: "POST",
                     url: "DeleteCommande",
-                    data: { idCommande: $idCommande }
+                    data: { idCommande: $idCommande },
+
+                    success: function(){
+                        $(elt).parent().parent().remove();
+
+                        $.get("/CommandeController/TotalCommande" , function(rep){
+                            $(".TotalCommande").html(rep + " DH");
+                        });
+                    }
                 });
 
-                window.location.reload();
             }
             
         </script>
