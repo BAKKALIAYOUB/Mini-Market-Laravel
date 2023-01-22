@@ -1,92 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Friends Market</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{{ asset('./css/styles.css') }}" rel="stylesheet" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+    <title>
+    Votre Panier
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- Nucleo Icons -->
+    <link href="{{ asset('./css/Admin/nucleo-icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('./css/Admin/nucleo-svg.css') }}" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="{{ asset('./css/Admin/material-dashboard.css?v=3.0.4') }}" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-        <link rel="stylesheet" href="{{ asset('./css/styleTable.css') }}">
-    </head>
-    <body>
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #30485f;">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Friends Market</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>                        
-                    </ul>
+<body class="g-sidenav-show  bg-gray-200">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                <h6 class="text-white text-capitalize ps-3" id="Nomtable">Votre Paniers </h6>
+                            </div>
+                        </div>
+                        <div class="card-body px-0 pb-2">
+                            <div class="table-responsive p-0" id="data-table">
+                                <table class="table align-items-center mb-0">
+                                    <thead>
+                                        <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantité</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prix</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($table as $commande)
+                                        <tr>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0"><img src="{{ $commande->URL }}" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                <span > {{ $commande->Description }} </span>
+                                            </p>
+                                        </td>
+                                        <td>
+                                            <input  type="number" value="{{ $commande->Quantité }}" class="selectQuantité" id="{{ $commande->Id_commande }}" onchange="updateQuantité(this)">
+                                        </td>
+                                        <td class="align-middle text-center text-sm">
+                                            {{ $commande->Prix }}
+                                            DH
+                                        </td>
+                                        <td >
+                                            <a class="badge badge-sm bg-gradient-success" id="{{ $commande->Id_commande }}" onclick="supprimerCommande(this)">
+                                                Supprimer
+                                            </a>
+                                        </td>
+                                        </tr>
+                                        @endforeach
+                                        <tr>
+                                            <td colspan="2">Total</td>
+                                            <td  id="TotalCommande" class="align-middle text-center text-sm"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>              
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-
-        <!-- Section-->
-        <h1 style="float:left;padding-left:10px;">Votre Panier :</h1>
-        <div style="padding:10px;">
-            <table>
-                <thead>
-                <tr>
-                    <th>Description</th>
-                    <th>Quantité</th>
-                    <th>Prix</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                    @foreach ($table as $commande)
-                    <tr>
-                        
-                        <td data-title='E-mail'>
-                            <img src="{{ $commande->URL }}" alt="imageCommande">
-                            {{ $commande->Description }}
-                        </td>
-                        <td >
-                            <input  type="number" value="{{ $commande->Quantité }}" class="selectQuantité" id="{{ $commande->Id_commande }}" onchange="updateQuantité(this)">
-                        </td>
-                        <td>
-                            {{ $commande->Prix }}
-                            DH
-                        </td>
-                        <td class='select'>
-                            <a class='button' id="{{ $commande->Id_commande }}" onclick="supprimerCommande(this)">
-                                Supprimer
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                <tfoot>
-                    <td colspan="2">Total</td>
-                    <td class="TotalCommande">
-                    </td>
-                </tfoot>
-            </table>
         </div>
-
-
-        <!-- Footer-->
-
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    </main>
 
 
         <script>
             $.get("/CommandeController/TotalCommande" , function(rep){
-                $(".TotalCommande").html(rep + " DH");
+                $("#TotalCommande").html(rep + " DH");
             });
             function updateQuantité(elt){
                 $newQuantité = $(".selectQuantité").val();
@@ -107,41 +105,30 @@
                         idCommande: $idCommande
                     }
                 });
-
                 
                 $.get("/CommandeController/TotalCommande" , function(rep){
                     $(".TotalCommande").html(rep + " DH");
                 });
             }
-
             function supprimerCommande(elt){
                 $idCommande = $(elt).attr('id');
-
                 $.ajaxSetup({
                     headers:{
                         'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr("content")
                     }
                 });
-
                 $.ajax({
                     type: "POST",
                     url: "DeleteCommande",
                     data: { idCommande: $idCommande },
-
                     success: function(){
                         $(elt).parent().parent().remove();
-
                         $.get("/CommandeController/TotalCommande" , function(rep){
                             $(".TotalCommande").html(rep + " DH");
                         });
                     }
                 });
-
             }
-            
         </script>
-            
-        
-    </body>
-    </html>
-    
+
+</body>
