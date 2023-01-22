@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 
 use App\Models\Client;
+use App\Models\Commande;
+
 
 class LoginController extends Controller
 {
@@ -26,8 +28,9 @@ class LoginController extends Controller
             'Prenom' => 'required',
             //validation d'email: Unique dans la  table Client
             'Email' => 'required|email|unique:Client,Email',
-            'Password' => 'required'
+            'Password' => 'required' 
         ]);
+         
         //insertion  des données dans la table client
         $insertTable = Client::insert([
             'Nom' => $nom,
@@ -35,6 +38,8 @@ class LoginController extends Controller
             'Email' => $email,           
             'Password' => $password
         ]);
+
+
 
         //Réussit d'insertion ==> redirect vers view produits 
         if ($insertTable ){

@@ -74,7 +74,7 @@
             </div>
     
             <div class="boxAdministrateurs">
-                <a href="login">Administrateurs</a>
+                <a href="loginAdmin">Administrateurs</a>
             </div>
         </div>  
 

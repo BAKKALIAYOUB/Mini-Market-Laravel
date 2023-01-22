@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Commande extends Model
+class Chaussures extends Model
 {
     use HasFactory;
-    protected $table = "commande";
+    protected $table = "chaussures";
+    protected $fillable = ['Id_Produits' , 'Description' , 'URL' , 'Prix'];
     public $timestamps = false;
-
-
 }

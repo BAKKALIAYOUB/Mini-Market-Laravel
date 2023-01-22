@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Commande;
 
 use App\Models\Produits;
+use App\Models\Client;
+
 
 
 class CommandeController extends Controller
@@ -16,19 +18,18 @@ class CommandeController extends Controller
 
         $produits = Produits::where('Id_Produits' , $id)->first();
 
-        $insert = Commande::insert([
+        Commande::insert([
             'Id_commande' => $produits->Id_Produits,
             'Description' => $produits->Description,
             'URL' => $produits->URL, 
             'Quantité' => 1,         
-            'Prix' => $produits->Prix
+            'Prix' => $produits->Prix,
         ]);
         
     }
 
     public function NomberOfCommande(){
         $NumbreCommande = Commande::count();
-
         return $NumbreCommande;
     }
 
