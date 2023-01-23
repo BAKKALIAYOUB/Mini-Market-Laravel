@@ -70,7 +70,7 @@
         <!-- Client / administrateur -->
         <div class="Boxs">
             <div class="boxClient">
-                <a href="register">Client</a>
+                <a href="Login">Client</a>
             </div>
     
             <div class="boxAdministrateurs">

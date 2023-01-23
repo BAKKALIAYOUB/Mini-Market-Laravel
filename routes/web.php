@@ -26,7 +26,11 @@ Route::get('/', function () {
 });
 
 Route::get('/register' , function(){
-    return view('Register');
+    return view("Register");
+});
+
+Route::get('/Login' , function(){
+    return view('Login');
 });
 
 Route::get("/loginAdmin" , function(){
@@ -40,8 +44,11 @@ Route::get('produitsAdmin' , function(){
 })->name('produitsAdmin');
 
 //route login qui retourne la view register
-Route::get('login' , [LoginController::class , 'create'])->name('login');
-Route::post('loginValidation' , [LoginController::class , "store"]);
+Route::get('login' , [RegisterController::class , 'create'])->name('login');
+Route::post('loginValidation' , [RegisterController::class , "store"]);
+
+//route pour login de client
+Route::post('LoginClient' , [RegisterController::class , 'CheckClient']);
 
 //route produits qui redirect vers la view produits si l'athentification du l'utilisateur est reussi
 Route::get('/produits' , [ProduitsController::class , 'index'])->name('produits');
@@ -51,16 +58,22 @@ Route::post('test' , [CommandeController::class , 'ajouterCommande']);
 
 Route::get('/CommandeController/NomberOfCommande' , [ CommandeController::class , 'NomberOfCommande' ])->name('/CommandeController/NomberOfCommande');
 Route::get('/produits/commande' ,  [CommandeController::class , 'CommandeTable'])->name('commande');
+
 //update de la quantité de la commande quand l'utilsateur change la quantité 
 Route::post('produits/updateQuantité' , [CommandeController::class , 'updateCommande']);
+
 //envoie de total du commande calculer par la fo,ction TotalCommande du controlleur CommandeController au view commande
 Route::get('/CommandeController/TotalCommande' , [CommandeController::class , 'TotalCommande'])->name('/CommandeController/NomberOfCommande');
+
 //supresion de la commande quand l'utilsateur clique sur le button supprimer
 Route::post('produits/DeleteCommande' , [CommandeController::class , 'DeleteCommande']);
+
 //route pour login d'administrateur
 Route::post('loginAdminV' , [AdminController::class , 'login']);
+
 //route pour afficher le tableau de la commande au view d'administrateur
 Route::get('loginAdmin/produits' , [ProduitsAdminController::class , 'index'])->name('produitsAdmin');
+
 //suppression de la commande par l'administrateur  
 Route::post('loginAdmin/produits/supprimerProduits/{table_name}' , [ProduitsAdminController::class , 'supprimerProduits']);
 

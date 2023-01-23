@@ -9,7 +9,7 @@ use App\Models\Client;
 use App\Models\Commande;
 
 
-class LoginController extends Controller
+class RegisterController extends Controller
 {
     public function create(){
         return view('Register');
@@ -39,11 +39,21 @@ class LoginController extends Controller
             'Password' => $password
         ]);
 
-
-
         //Réussit d'insertion ==> redirect vers view produits 
         if ($insertTable ){
             return redirect()->route('produits');
+        }
+    }
+
+    public function CheckClient(Request $request){
+        
+        $dd = Client::where('Email' , $request->input("Email"))->first();
+
+        if( $dd  &&  Hash::check($request->input("Password") , $dd->Password)){
+            return redirect()->route("produits");
+        }
+        else{
+            return redirect()->back()->withErrors(['Email' => 'L’adresse e-mail que vous avez saisie n’est pas associée à un compte']);
         }
     }
 

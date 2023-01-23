@@ -23,7 +23,7 @@ class AuthentificationUser
             if($client == null){
                 return $next($request);
             }else{
-                return redirect()->route('login')->withErrors(['Email' => 'The email provided does not match any records in our system']);
+                return redirect()->route('login');
             }
         }
         return redirect()->route('login')->withErrors(['Email' => 'The email provided does not match any records in our system']);

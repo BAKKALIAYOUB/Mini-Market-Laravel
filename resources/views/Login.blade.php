@@ -31,10 +31,14 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Administrateur</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome To Friends market <3</h1>
                                     </div>
-                                    <form class="user" method="POST" action=""> 
+                                    <form class="user" method="POST" action="LoginClient"> 
                                         @csrf
+                                        @if($errors->has('Email'))
+                                            <p style="color:red;">{{ $errors->first('Email') }} . <a href="register" style="color:red;"><strong>créer un compte ?</strong></a></p>
+                                            
+                                        @endif
                                         <div class="form-group">
                                             <input type="texte" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
@@ -46,7 +50,8 @@
                                         </div>
                                         <input type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                                     </form>
-                                    
+                                    <hr>
+                                    <a href="register" style="text-align:center; margin-top:10px;">créer un compte ?</a>
 
                                 </div>
                             </div>
