@@ -24,9 +24,9 @@ class AdminController extends Controller
     
             if (Client::where('email', $email)->exists()) {
                 // client with the given email exists
-                return redirect()->route('produitsAdmin');
+                return redirect()->route('adminView');
             } else {
-                echo "no :/";
+                return redirect()->back()->withErrors(['Email' => 'L’adresse e-mail que vous avez saisie n’est pas associée à un Administrateur']);
             }
             
         

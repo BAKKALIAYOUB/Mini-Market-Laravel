@@ -21,6 +21,10 @@ class ProduitsAdminController extends Controller
         return view('produitsAdmin' , compact('table'));
     }
 
+    public function index1(){
+        return view('adminView');
+    }
+
 
     public function supprimerProduits(Request $request , $table_name){
         if($table_name == "Sweatshirts"){

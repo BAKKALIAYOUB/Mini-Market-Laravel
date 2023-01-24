@@ -87,6 +87,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background-image: url("../images/back\ titre.jpg");
 }
 
 hr {
@@ -7842,7 +7843,7 @@ textarea.form-control-lg {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: #4e73df;
+  background-color: #7a929ca6;
 }
 
 .bg-black {

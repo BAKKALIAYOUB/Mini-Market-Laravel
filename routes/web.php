@@ -31,7 +31,7 @@ Route::get('/register' , function(){
 
 Route::get('/Login' , function(){
     return view('Login');
-});
+})->name('login');
 
 Route::get("/loginAdmin" , function(){
     return view('loginAdmin');
@@ -39,12 +39,25 @@ Route::get("/loginAdmin" , function(){
 Route::get("/produits/commande" , function(){
     return view('commande');
 });
-Route::get('produitsAdmin' , function(){
-    return view('produitsAdmin');
-})->name('produitsAdmin');
+
+Route::get("/payment" , function(){
+    return view("payment");
+});
+
+Route::get('/adminView' , function(){
+    return view ('adminView');
+})->name('adminView');
+
+
+Route::get('/produits' , [ProduitsController::class , 'index'])->name('produits');
+Route::get('/pantalons' , [pantalonController::class , 'index2'])->name('pantalons');
+Route::get('/chaussures' , [chaussuresController::class , 'index3'])->name('chaussures');
+Route::get('/sacs' , [sacsController::class , 'index4'])->name('sacs');
+Route::get('/sweatshirts' , [sweatshirtsContoller::class , 'index5'])->name('sweatshirts');
+
 
 //route login qui retourne la view register
-Route::get('login' , [RegisterController::class , 'create'])->name('login');
+Route::get('Register' , [RegisterController::class , 'create'])->name('Register');
 Route::post('loginValidation' , [RegisterController::class , "store"]);
 
 //route pour login de client
@@ -69,16 +82,23 @@ Route::get('/CommandeController/TotalCommande' , [CommandeController::class , 'T
 Route::post('produits/DeleteCommande' , [CommandeController::class , 'DeleteCommande']);
 
 //route pour login d'administrateur
-Route::post('loginAdminV' , [AdminController::class , 'login']);
+Route::post('loginAdmin' , [AdminController::class , 'login']);
 
 //route pour afficher le tableau de la commande au view d'administrateur
-Route::get('loginAdmin/produits' , [ProduitsAdminController::class , 'index'])->name('produitsAdmin');
+Route::get('/all' , [ProduitsAdminController::class , 'index']);
+
+Route::get('loginAdmin/produits' , [ProduitsAdminController::class , 'index1']);
+
 
 //suppression de la commande par l'administrateur  
-Route::post('loginAdmin/produits/supprimerProduits/{table_name}' , [ProduitsAdminController::class , 'supprimerProduits']);
+Route::post('/{table_name}' , [ProduitsAdminController::class , 'supprimerProduits']);
 
 //route pour modification produits
-Route::post('loginAdmin/produits/Modification/{table_name}' , [ProduitsAdminController::class , 'ModificationProduits']);
+Route::post('/{table_name}' , [ProduitsAdminController::class , 'ModificationProduits']);
 
-Route::post('loginAdmin/produits/{table_name}' , [ProduitsAdminController::class , 'display']);
+Route::post('/{table_name}' , [ProduitsAdminController::class , 'display']);
 
+Route::post('addChaussures' , [CommandeController::class , 'ajouterChaussures']);
+Route::post('addPantalons' , [CommandeController::class , 'ajouterPantalons']);
+Route::post('addSacs' , [CommandeController::class , 'ajoutersacs']);
+Route::post('addSweatshirts' , [CommandeController::class , 'ajoutersweatshirts']);

@@ -9,6 +9,12 @@ use App\Models\Commande;
 use App\Models\Produits;
 use App\Models\Client;
 
+use App\Models\Chaussures;
+use App\Models\Pantalons;
+use App\Models\Sacs;
+use App\Models\Sweatshirts;
+
+
 
 
 class CommandeController extends Controller
@@ -17,6 +23,70 @@ class CommandeController extends Controller
         $id = $request->id;
 
         $produits = Produits::where('Id_Produits' , $id)->first();
+
+        Commande::insert([
+            'Id_commande' => $produits->Id_Produits,
+            'Description' => $produits->Description,
+            'URL' => $produits->URL, 
+            'Quantité' => 1,         
+            'Prix' => $produits->Prix,
+        ]);
+    }
+
+    public function  ajouterChaussures(Request $request){
+        $id = $request->id;
+
+        $produits = chaussures::where('Id_Produits' , $id)->first();
+       
+
+        Commande::insert([
+            'Id_commande' => $produits->Id_Produits,
+            'Description' => $produits->Description,
+            'URL' => $produits->URL, 
+            'Quantité' => 1,         
+            'Prix' => $produits->Prix,
+        ]);
+        
+    }
+
+    public function  ajouterPantalons(Request $request){
+        $id = $request->id;
+
+        $produits = pantalons::where('Id_Produits' , $id)->first();
+       
+
+        Commande::insert([
+            'Id_commande' => $produits->Id_Produits,
+            'Description' => $produits->Description,
+            'URL' => $produits->URL, 
+            'Quantité' => 1,         
+            'Prix' => $produits->Prix,
+        ]);
+        
+    }
+
+
+    public function  ajouterSacs(Request $request){
+        $id = $request->id;
+
+        $produits = sacs::where('Id_Produits' , $id)->first();
+
+        Commande::insert([
+            'Id_commande' => $produits->Id_Produits,
+            'Description' => $produits->Description,
+            'URL' => $produits->URL, 
+            'Quantité' => 1,         
+            'Prix' => $produits->Prix,
+        ]);
+        
+    }
+
+
+    public function  ajoutersweatshirts(Request $request){
+        $id = $request->id;
+
+        $produits = sweatshirts::where('Id_Produits' , $id)->first();
+       
 
         Commande::insert([
             'Id_commande' => $produits->Id_Produits,

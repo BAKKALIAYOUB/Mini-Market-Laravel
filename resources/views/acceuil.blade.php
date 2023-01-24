@@ -15,6 +15,7 @@
 
 
         <style>
+
             .Boxs{
                 margin: auto;
                 width: 500px;
@@ -23,9 +24,11 @@
                 margin-top: 80px;
             }
             .boxClient{
+                text-align:center;
+                width:4cm;
                 --bs-bg-opacity: 1;
-                background-color: #4e73df;
-                padding: 40px;
+                background-color: #a7a344;
+                padding: 30px;
                 margin: auto;
                 border-radius: 10%;
                 font-size: 1.2rem;
@@ -37,10 +40,13 @@
             }
 
             .boxAdministrateurs{
+                text-align: center;
+                width:5cm;
                 --bs-bg-opacity: 1;
-                background-color: #4e73df;
-                padding: 40px;
+                background-color: #a7a344;
+                padding: 30px;
                 margin: auto;
+                margin-left:1cm;
                 border-radius: 10%;
                 font-size: 1.2rem;
                 line-height: 1.2;
@@ -74,7 +80,7 @@
             </div>
     
             <div class="boxAdministrateurs">
-                <a href="loginAdmin">Administrateurs</a>
+                <a href="loginAdmin">Administrateur</a>
             </div>
         </div>  
 
@@ -84,7 +90,7 @@
 
         <script>
             var typed = new Typed(".auto-type", {
-                strings: ["Friends Shop" , "" , "Friends Shop" , ""],
+                strings: ["Friends Market" , "" , "Friends Market" , ""],
                 smartBackspace: true,
                 loop: true,
                 typeSpeed: 60,
