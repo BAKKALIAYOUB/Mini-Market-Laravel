@@ -40,7 +40,6 @@ class CommandeController extends Controller
        
 
         Commande::insert([
-            'Id_commande' => $produits->Id_Produits,
             'Description' => $produits->Description,
             'URL' => $produits->URL, 
             'Quantité' => 1,         
