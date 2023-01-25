@@ -16,15 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-Route::get('/test' , function(){
-    return view('test');
-});
-
+//route pour view acceuil
 Route::get('/', function () {
     return view('acceuil');
 });
 
+//route pour la view register
 Route::get('/register' , function(){
     return view("Register");
 });
@@ -66,20 +63,26 @@ Route::post('LoginClient' , [RegisterController::class , 'CheckClient']);
 //route produits qui redirect vers la view produits si l'athentification du l'utilisateur est reussi
 Route::get('/produits' , [ProduitsController::class , 'index'])->name('produits');
 
-
-Route::post('test' , [CommandeController::class , 'ajouterCommande']);
-
 Route::get('/CommandeController/NomberOfCommande' , [ CommandeController::class , 'NomberOfCommande' ])->name('/CommandeController/NomberOfCommande');
 Route::get('/produits/commande' ,  [CommandeController::class , 'CommandeTable'])->name('commande');
-
-//update de la quantité de la commande quand l'utilsateur change la quantité 
-Route::post('produits/updateQuantité' , [CommandeController::class , 'updateCommande']);
 
 //envoie de total du commande calculer par la fo,ction TotalCommande du controlleur CommandeController au view commande
 Route::get('/CommandeController/TotalCommande' , [CommandeController::class , 'TotalCommande'])->name('/CommandeController/NomberOfCommande');
 
+//update de la quantité de la commande quand l'utilsateur change la quantité 
+Route::get('produits/updateQuantité' , [CommandeController::class , 'updateCommande']);
+
+
 //supresion de la commande quand l'utilsateur clique sur le button supprimer
 Route::post('produits/DeleteCommande' , [CommandeController::class , 'DeleteCommande']);
+//route pour ajouter les commande au panier pour chaque view de catégories
+Route::post('addChaussures' , [CommandeController::class , 'ajouterChaussures']);
+Route::post('addPantalons' , [CommandeController::class , 'ajouterPantalons']);
+Route::post('addSacs' , [CommandeController::class , 'ajoutersacs']);
+Route::post('addSweatshirts' , [CommandeController::class , 'ajoutersweatshirts']);
+Route::post('test' , [CommandeController::class , 'ajouterCommande']);
+
+
 
 //route pour login d'administrateur
 Route::post('loginAdmin' , [AdminController::class , 'login']);
@@ -89,16 +92,11 @@ Route::get('/all' , [ProduitsAdminController::class , 'index']);
 
 Route::get('loginAdmin/produits' , [ProduitsAdminController::class , 'index1']);
 
-
 //suppression de la commande par l'administrateur  
 Route::post('/{table_name}' , [ProduitsAdminController::class , 'supprimerProduits']);
 
-//route pour modification produits
+//route pour modification produits selon catégories
 Route::post('/{table_name}' , [ProduitsAdminController::class , 'ModificationProduits']);
-
+//route pour afficher les produits selon les catégories 
 Route::post('/{table_name}' , [ProduitsAdminController::class , 'display']);
 
-Route::post('addChaussures' , [CommandeController::class , 'ajouterChaussures']);
-Route::post('addPantalons' , [CommandeController::class , 'ajouterPantalons']);
-Route::post('addSacs' , [CommandeController::class , 'ajoutersacs']);
-Route::post('addSweatshirts' , [CommandeController::class , 'ajoutersweatshirts']);

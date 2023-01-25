@@ -36,7 +36,7 @@ class CommandeController extends Controller
     public function  ajouterChaussures(Request $request){
         $id = $request->id;
 
-        $produits = chaussures::where('Id_Produits' , $id)->first();
+        $produits = Chaussures::where('Id_Produits' , $id)->first();
        
 
         Commande::insert([

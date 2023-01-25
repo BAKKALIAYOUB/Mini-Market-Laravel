@@ -7,7 +7,6 @@
         <meta name="author" content="" />
         <title>Friends Market</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
@@ -40,7 +39,7 @@
                 <tr>
                     <th>Description</th>
                     <th>Quantité</th>
-                    <th>Prix</th>
+                    <th>Prix (× 1)</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -73,7 +72,7 @@
                     </td>
                 </tfoot>
             </table>
-            <a class="btn btn-outline-dark" href="/payment">
+            <a class="btn btn-outline-dark" href="/payment" style="margin-top: 20px;">
                 <i class="bi-cart-fill me-1"></i>
                 Valider la commande
             </a>
@@ -89,12 +88,15 @@
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 
+    
+
         <script>
             $.get("/CommandeController/TotalCommande" , function(rep){
                 $(".TotalCommande").html(rep + " DH");
             });
             function updateQuantité(elt){
-                $newQuantité = $(".selectQuantité").val();
+                $newQuantité = $(elt).val();
+                console.log($newQuantité);
                 $idCommande = $(elt).attr('id');
                 
                 
@@ -103,9 +105,9 @@
                         'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr("content")
                     }
                 });
-                
+                //probleme de update et this : recuperation juste de la 1er commande
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: "updateQuantité",
                     data: { 
                         quantite: $newQuantité,

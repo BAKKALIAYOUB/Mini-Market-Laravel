@@ -103,7 +103,7 @@
 
         <script>
   
-  $.get('/CommandeController/NomberOfCommande' , function(rep){
+            $.get('/CommandeController/NomberOfCommande' , function(rep){
                 $(".badge").html(rep);
             });
             function addToCard(elt){

@@ -114,10 +114,15 @@
                     data: { 
                         id: $id,
                     }
+                    ,
+                    success: function(){
+                        console.log("oui");
+                    }
                 });
                 $.get('/CommandeController/NomberOfCommande' , function(rep){
-                $(".badge").html(rep);
-            });
+                    $(".badge").html(rep);
+                });
+                console.log($id);
             }
         </script>
     </body>
