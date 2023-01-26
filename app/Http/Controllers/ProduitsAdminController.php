@@ -91,7 +91,7 @@ class ProduitsAdminController extends Controller
     }
 
     public function displayFormulaire(){
-        return view ('ajouterProduits');
+        return view('ajouterProduits');
     }
 
 

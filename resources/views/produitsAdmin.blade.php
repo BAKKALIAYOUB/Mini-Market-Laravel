@@ -94,12 +94,13 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card my-4">
-                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2" >
                             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3" id="test">
-                                <h6 class="text-white text-capitalize ps-3" id="Nomtable">Les <span id="h1-Table-name">Produits</span> les plus vendues <a class="badge badge-sm bg-gradient-success" style="float:right; margin-right :20px;" onclick="formAjouterproduits()">Ajouter</a></h6>
+                                <h6 class="text-white text-capitalize ps-3" id="Nomtable">Produits</h6>
+                                <a id="buttonAjouter" class="badge badge-sm bg-gradient-success" style="float:right; margin :20px;" onclick="formAjouterproduits()">Ajouter</a>
                             </div>
                         </div>
-                        <div class="card-body px-0 pb-2">
+                        <div class="card-body px-0 pb-2" id='form'>
                             <div class="table-responsive p-0" id="data-table">
                                 <table class="table align-items-center mb-0">
                                     <thead>
@@ -212,9 +213,29 @@
                     url:  $tableName,
                     success: function(responce){
                         $("#data-table").html( $(responce).find('table')  );
+                        $("#buttonAjouter").css("display" , "block");
+
                     }
                 });
                 $('#Nomtable').html($tableName);
+            }
+
+
+            function formAjouterproduits(){
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr("content")
+                    }
+                });
+
+                $.ajax({
+                    type: "GET",
+                    url: "all/displayFormAjouterProduits",
+                    success: function(responce){
+                        $("#data-table").html($(responce));
+                        $("#buttonAjouter").css("display" , "none");
+                    }
+                });
             }
 
         </script>

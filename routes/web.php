@@ -99,5 +99,6 @@ Route::post('{table_name}' , [ProduitsAdminController::class , 'display']);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //route pour afficher le formulaire
+Route::get('all/displayFormAjouterProduits' , [ProduitsAdminController::class , 'displayFormulaire']);
 
 

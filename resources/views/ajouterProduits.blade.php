@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -46,7 +47,7 @@
   </head>
 
   <body>
-    <form class="form-horizontal" method="POST"  action="AjouterProduit" style="width: 1100px;">
+    <form class="form-horizontal" id="test" method="POST"  action="AjouterProduit" style="width: 1100px;">
         @csrf
         <!-- Form Name -->
         <legend>PRODUIT A AJOUTER </legend>
