@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Produits;
 use App\Models\Commande;
 
+use Illuminate\Support\Facades\Auth;
+
+
 
 class ProduitsController extends Controller
 {
@@ -14,7 +17,7 @@ class ProduitsController extends Controller
         return view("produits");
     }
     
-    public function index(){
+    public function index(Request $rq){
 
         $table = Produits::all();
 

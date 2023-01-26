@@ -12,6 +12,7 @@ use App\Models\Client;
 use App\Models\Commande;
 
 
+
 class RegisterController extends Controller
 {
     public function create(){
@@ -51,7 +52,6 @@ class RegisterController extends Controller
     public function CheckClient(Request $request){
         
         $dd = Client::where('Email' , $request->input("Email"))->first();
-
         if( $dd  &&  Hash::check($request->input("Password") , $dd->Password)){
             return redirect()->route("produits");
         }

@@ -25,7 +25,6 @@ class CommandeController extends Controller
         $produits = Produits::where('Id_Produits' , $id)->first();
 
         Commande::insert([
-            'Id_commande' => $produits->Id_Produits,
             'Description' => $produits->Description,
             'URL' => $produits->URL, 
             'Quantité' => 1,         
@@ -55,7 +54,6 @@ class CommandeController extends Controller
        
 
         Commande::insert([
-            'Id_commande' => $produits->Id_Produits,
             'Description' => $produits->Description,
             'URL' => $produits->URL, 
             'Quantité' => 1,         
@@ -71,7 +69,6 @@ class CommandeController extends Controller
         $produits = sacs::where('Id_Produits' , $id)->first();
 
         Commande::insert([
-            'Id_commande' => $produits->Id_Produits,
             'Description' => $produits->Description,
             'URL' => $produits->URL, 
             'Quantité' => 1,         
@@ -88,7 +85,6 @@ class CommandeController extends Controller
        
 
         Commande::insert([
-            'Id_commande' => $produits->Id_Produits,
             'Description' => $produits->Description,
             'URL' => $produits->URL, 
             'Quantité' => 1,         

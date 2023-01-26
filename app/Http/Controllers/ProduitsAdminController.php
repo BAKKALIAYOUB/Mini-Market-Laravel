@@ -27,6 +27,7 @@ class ProduitsAdminController extends Controller
 
 
     public function supprimerProduits(Request $request , $table_name){
+        
         if($table_name == "Sweatshirts"){
             Sweatshirts::where("Id_Produits" , $request->id_produit)->delete();
 
@@ -36,6 +37,7 @@ class ProduitsAdminController extends Controller
 
         }
         else if($table_name == "Pantalons"){
+            
             Pantalons::where("Id_Produits" , $request->id_produit)->delete();
 
         }
@@ -87,4 +89,10 @@ class ProduitsAdminController extends Controller
 
 
     }
+
+    public function displayFormulaire(){
+        return view ('ajouterProduits');
+    }
+
+
 }

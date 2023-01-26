@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,7 +27,7 @@
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <h4 class="text-white text-capitalize ps-3" id="Nomtable" style="padding:20px 0 0 20px;">Administrateur</h4>
+      <h4 class="text-white text-capitalize ps-3" id="Nomtable1" style="padding:20px 0 0 20px;">Administrateur</h4>
     </div>
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main" style="height:500px">
@@ -94,8 +95,8 @@
                 <div class="col-12">
                     <div class="card my-4">
                         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                <h6 class="text-white text-capitalize ps-3" id="Nomtable">Les <span id="h1-Table-name">Produits</span> les plus vendues <span class="badge badge-sm bg-gradient-success" style="float:right; margin-right :20px;">Ajouter</span></h6>
+                            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3" id="test">
+                                <h6 class="text-white text-capitalize ps-3" id="Nomtable">Les <span id="h1-Table-name">Produits</span> les plus vendues <a class="badge badge-sm bg-gradient-success" style="float:right; margin-right :20px;" onclick="formAjouterproduits()">Ajouter</a></h6>
                             </div>
                         </div>
                         <div class="card-body px-0 pb-2">
@@ -155,11 +156,11 @@
                     }
                 });
 
-                $table_Name = $('#h1-Table-name').html();
-
+                $table_Name = $('#Nomtable').html();
+                console.log($table_Name)
 
                 $.ajax({
-                    type: "POST",
+                    type: "GET",
                     url: "supprimerProduits/" + $table_Name,
                     data: {id_produit: $id},
                     success: function(){
@@ -180,8 +181,9 @@
                     console.log($newVal);
                     console.log($NomColumn);
 
-                    $table_name = $('#h1-Table-name').html();
+                    $table_name = $('#Nomtable').html();
 
+                    console.log($table_name);
                     $.ajaxSetup({
                         headers:{
                             'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr("content")
@@ -189,8 +191,8 @@
                     });
                     console.log($table_name);
                     $.ajax({
-                        type: "POST",
-                        url: "Modification/"+$table_name,
+                        type: "GET",
+                        url: "modifierProduits/"+$table_name,
                         data: {id: $idProduits , newVal: $newVal , NomColumn: $NomColumn}
                     });
 
@@ -214,6 +216,8 @@
                 });
                 $('#Nomtable').html($tableName);
             }
+
         </script>
 
 </body>
+</html>

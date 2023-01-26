@@ -45,6 +45,10 @@ Route::get('/adminView' , function(){
     return view ('adminView');
 })->name('adminView');
 
+Route::get("/form" , function(){
+    return view("ajouterProduits");
+});
+
 
 Route::get('/produits' , [ProduitsController::class , 'index'])->name('produits');
 Route::get('/pantalons' , [pantalonController::class , 'index2'])->name('pantalons');
@@ -83,20 +87,17 @@ Route::post('addSweatshirts' , [CommandeController::class , 'ajoutersweatshirts'
 Route::post('test' , [CommandeController::class , 'ajouterCommande']);
 
 
-
 //route pour login d'administrateur
 Route::post('loginAdmin' , [AdminController::class , 'login']);
 
 //route pour afficher le tableau de la commande au view d'administrateur
+Route::get('modifierProduits/{table_name}' , [ProduitsAdminController::class , 'ModificationProduits']);
+Route::get('supprimerProduits/{table_name}' , [ProduitsAdminController::class , 'supprimerProduits']);
 Route::get('/all' , [ProduitsAdminController::class , 'index']);
-
 Route::get('loginAdmin/produits' , [ProduitsAdminController::class , 'index1']);
+Route::post('{table_name}' , [ProduitsAdminController::class , 'display']);
 
-//suppression de la commande par l'administrateur  
-Route::post('/{table_name}' , [ProduitsAdminController::class , 'supprimerProduits']);
+/////////////////////////////////////////////////////////////////////////////////////////////////
+//route pour afficher le formulaire
 
-//route pour modification produits selon catégories
-Route::post('/{table_name}' , [ProduitsAdminController::class , 'ModificationProduits']);
-//route pour afficher les produits selon les catégories 
-Route::post('/{table_name}' , [ProduitsAdminController::class , 'display']);
 
