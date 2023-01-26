@@ -97,8 +97,10 @@ Route::get('/all' , [ProduitsAdminController::class , 'index']);
 Route::get('loginAdmin/produits' , [ProduitsAdminController::class , 'index1']);
 Route::post('{table_name}' , [ProduitsAdminController::class , 'display']);
 
+Route::get('AjouterProduit' , [AjouterController::class , 'store' ]);
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //route pour afficher le formulaire
 Route::get('all/displayFormAjouterProduits' , [ProduitsAdminController::class , 'displayFormulaire']);
+
 
 

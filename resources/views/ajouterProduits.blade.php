@@ -47,7 +47,7 @@
   </head>
 
   <body>
-    <form class="form-horizontal" id="test" method="POST"  action="AjouterProduit" style="width: 1100px;">
+    <form class="form-horizontal"  method="GET"  action="AjouterProduit" style="width: 1100px;">
         @csrf
         <!-- Form Name -->
         <legend>PRODUIT A AJOUTER </legend>
@@ -89,13 +89,13 @@
             <input type="radio" name="option" value="Sweatshirts"><label>Sweatshirts</label>
           </div>
           <div class="form-group" style="margin:auto;">
-            <input type="radio" name="option" ><label>Pantalons</label>
+            <input type="radio" name="option" value='Pantalons'><label>Pantalons</label>
           </div>
           <div class="form-group" style="margin:auto;">
-            <input type="radio" name="option" ><label>Sacs</label>
+            <input type="radio" name="option" value="Sacs"><label>Sacs</label>
           </div>
           <div class="form-group" style="margin:auto;">
-            <input type="radio" name="option" ><label>Chaussures</label>
+            <input type="radio" name="option" value="Chaussures"><label>Chaussures</label>
           </div>
         </div>
 

@@ -94,5 +94,4 @@ class ProduitsAdminController extends Controller
         return view('ajouterProduits');
     }
 
-
 }
