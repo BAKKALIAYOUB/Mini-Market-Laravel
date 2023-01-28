@@ -33,31 +33,40 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main" style="height:500px">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white " href="../pages/dashboard.html">
+          <a class="nav-link text-white " href="/adminView">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link text-white " href="categories">
+          <a class="nav-link text-white ">
+                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">table_view</i>
+            </div>
+            <span class="nav-link-text ms-1">Produits</span>
+          </a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white ">
                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
             <span class="nav-link-text ms-1">Categories</span>
           </a>
-        </li>
 
-        <ul class="nav-item mt-3">
-            <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Catégories</h6>
+        </li>
+        <ul class="nav-item mt-3" style="list-style:none;">
             <li class="nav-item">
-            <a class="nav-link text-white " onclick="displayTables(this)" name="Pantalons">
-                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="material-icons opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1" >Pantalons</span>
-            </a>
+                <a class="nav-link text-white " onclick="displayTables(this)" name="Pantalons">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="material-icons opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1" >Pantalons</span>
+                </a>
             </li>
             <li class="nav-item">
             <a class="nav-link text-white " onclick="displayTables(this)" name="Chaussures">

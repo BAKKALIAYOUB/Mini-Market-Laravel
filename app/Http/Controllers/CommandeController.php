@@ -24,12 +24,14 @@ class CommandeController extends Controller
 
         $produits = Produits::where('Id_Produits' , $id)->first();
 
-        Commande::insert([
+        $insertion = Commande::insert([
             'Description' => $produits->Description,
             'URL' => $produits->URL, 
             'Quantité' => 1,         
             'Prix' => $produits->Prix,
         ]);
+
+
     }
 
     public function  ajouterChaussures(Request $request){

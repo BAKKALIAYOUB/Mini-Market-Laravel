@@ -54,6 +54,7 @@
                 </ul>
             </div>
         </nav>
+
         <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
@@ -66,8 +67,8 @@
         <!-- Section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
+                <div class="alert alert-success" id="alert" style="display: none;"> Le produits a été bien ajouter </div>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                   
                    @foreach ($table as $data)
                     <div class="col mb-5">
                         <div class="card h-100">
@@ -119,10 +120,15 @@
                     data: { 
                         id: $id,
                     }
+                    ,success: function(){
+                        $("#alert").css("display" ,"block" );
+                        $("#alert").fadeOut(3000);
+                    }
                 });
                 $.get('/CommandeController/NomberOfCommande' , function(rep){
                     $(".badge").html(rep);
                 });
+
             }
     </script>
 </body>

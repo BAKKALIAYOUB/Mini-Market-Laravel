@@ -22,7 +22,19 @@ class AjouterController extends Controller
         $url = $request->input("URL");
         $prix = $request->input("Prix");
 
-        if($request->option == "Sweatshirts"){
+        if($request->option == "Produits"){
+            $insertion = Produits::insert([
+                'Description' => $description,
+                'URL' => $url,
+                'Prix' => $prix
+            ]);
+
+            if($insertion){
+                return redirect()->back();
+            }
+        }
+
+        else if($request->option == "Sweatshirts"){
             $insertion = Sweatshirts::insert([
                 'Description' => $description,
                 'URL' => $url,
@@ -40,7 +52,7 @@ class AjouterController extends Controller
                 'Prix' => $prix
             ]);
             if($insertion){
-                return redirect()->back();
+                return redirect()->back()->withErrors(["success" => "Le produits a été bien ajouter "]);
             }
         }
         else if($request->option == "Pantalons"){

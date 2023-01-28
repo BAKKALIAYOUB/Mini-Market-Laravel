@@ -97,6 +97,9 @@
           <div class="form-group" style="margin:auto;">
             <input type="radio" name="option" value="Chaussures"><label>Chaussures</label>
           </div>
+          <div class="form-group" style="margin:auto;">
+            <input type="radio" name="option" value="Produits"><label>Produits Les Plus Vendues</label>
+          </div>
         </div>
 
           
