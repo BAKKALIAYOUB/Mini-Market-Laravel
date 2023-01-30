@@ -76,7 +76,7 @@
           </li>
         </ul>
       </form>
-      <div class="alert alert-success" id="alert" style='display:none;'> Le produits a été bien ajouter </div>
+      <div class="alert alert-success" id="alert" style='display:none;'> Votre commande a été bien enregistrer </div>
 
     </div> <!-- END: .modal__content -->
   </div> <!-- END: .modal__container -->
